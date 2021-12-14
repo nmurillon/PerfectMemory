@@ -4,7 +4,7 @@
     <div class="container">
         <!-- Put ingedients here -->
         <ul>
-            <li *ngFor="let ingredient of ingredients">{{ ingredient.name }} - {{ ingredient.measure }} </li>
+            <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient.name }} - {{ ingredient.measure }} </li>
         </ul>
         <p>{{ recipe.strInstructions }}</p>
     </div>

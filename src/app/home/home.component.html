@@ -3,6 +3,18 @@
     <h2 class="text-center">The best place on Earth to find your next meal</h2>
     <div class="container-fluid container mt-4">
         <h4>In order to help you choose, here are 10 random recipes</h4>
+
+        <form [formGroup]="recipeForm">
+        
+            <label for="category">Category: </label>
+            <input id="category" type="text" formControlName="category">
+        
+            <label for="recipe-name">Name: </label>
+            <input id="recipe-name" type="text" formControlName="name">
+        
+            <button type="submit" class="btn btn-success" (click)="onSearch()">Search</button>
+        </form>
+
         <div class="container d-flex row">
             <div class="card m-4 mw-45" *ngFor="let meal of meals">
                 <div class="card-body">

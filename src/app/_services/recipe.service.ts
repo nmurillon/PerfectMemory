@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const API = "https://www.themealdb.com/api/json/v1/1/"
@@ -24,4 +24,7 @@ export class RecipeService {
     return this.http.get(API + "lookup.php?i=" + id);
   }
   
+  getRecipeByName(name: string): Observable<any> {
+    return this.http.get(API + "search.php?s=" + name);
+  }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { RecipeService } from '../_services/recipe.service';
+import { processRecipe } from '../_utils/utils';
 
 @Component({
   selector: 'app-home',
@@ -11,23 +13,19 @@ export class HomeComponent implements OnInit {
   constructor(private recipeService: RecipeService) { }
   
   meals = [];
-  
+
+  recipeForm = new FormGroup({
+    name: new FormControl(''),
+    category: new FormControl(''),
+  });
+
   ngOnInit(): void {
     /* As the API requires a key (for patreons) to get multiple meals, we will call the api 10 times to get one meal each time*/
     for(let i=0; i<10; i++) {
       this.recipeService.getRandomRecipe().subscribe(
         data => {
           let meal = data.meals[0];
-          let ingredientCount = 0;
-          let j=1;
-          let ingredient = "strIngredient" + j;
-          while(j<=20 && meal[ingredient] != ""){
-              ingredientCount++;
-              j++;
-              ingredient = "strIngredient" + j;
-          }
-
-          meal["ingredientCount"] = ingredientCount;
+          processRecipe(meal)
           this.meals.push(meal);
         },
         err => {
@@ -38,4 +36,17 @@ export class HomeComponent implements OnInit {
     console.log(this.meals);
   }
 
+  onSearch() {
+
+    const formValues = this.recipeForm.value;
+    /* First we'll consider that category only filters the meals already displayed on screen */
+    if (formValues.name !== "") {
+      
+    }
+
+    if (formValues.category !== "") {
+      
+    }
+    console.log();
+  }
 }

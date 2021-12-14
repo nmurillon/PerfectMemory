@@ -2,6 +2,7 @@ import { NONE_TYPE } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RecipeService } from '../_services/recipe.service';
+import { processRecipe } from '../_utils/utils';
 
 @Component({
   selector: 'app-recipie-view',
@@ -13,7 +14,6 @@ export class RecipieViewComponent implements OnInit {
   constructor(private route: ActivatedRoute, private recipeService: RecipeService) { }
 
   recipe = undefined;
-  ingredients = [];
   success = false;
 
   ngOnInit(): void {
@@ -21,24 +21,14 @@ export class RecipieViewComponent implements OnInit {
     this.recipeService.getRecipeById(id).subscribe(
       data => {
         this.recipe = data.meals[0];
-        
-        let i = 1;
-
-        while( i<20 && this.recipe["strIngredient" + i] !== "" ){
-          this.ingredients.push({
-            'name': this.recipe["strIngredient" + i],
-            'measure': this.recipe["strMeasure" + i]
-          });
-          i++;
-        }
-
+        processRecipe(this.recipe);
         this.success = true;
       },
       err => {
         console.error(err);
       }
     );
-    
+
   }
 
 }

@@ -1,18 +1,19 @@
-<!-- TODO : Need to rework the way card are displayed -->
-
 <div class="container">
-    <h1 class="text-center">Welcome on Perfect Recipe !</h1>
-    <h2 class="text-center">The best place on Eath to find your next meal</h2>
+    <h1 class="text-center">Welcome to Perfect Recipe !</h1>
+    <h2 class="text-center">The best place on Earth to find your next meal</h2>
     <div class="container-fluid container mt-4">
         <h4>In order to help you choose, here are 10 random recipes</h4>
-        <div class="container">
-            <div class="card" *ngFor="let meal of meals">
-                <div class="card-header">
-                    <img [src]="meal.strMealThumb">
-                </div>
+        <div class="container d-flex row">
+            <div class="card m-4 mw-45" *ngFor="let meal of meals">
                 <div class="card-body">
-                    <h4>{{ meal.strMeal }}</h4>
-                    <p>{{ meal.strCategory}} - {{ meal.ingredient_count }} ingredients</p>
+                    <div>
+                        <img [src]="meal.strMealThumb" class="card-img-top" alt="{{'Picture of' + meal.strMeal}}">
+                        <div class="text-center">
+                            <h4 class="fw-bold">{{ meal.strMeal }}</h4>
+                            <p class="card-text">{{ meal.strCategory}} - {{ meal.ingredientCount }} ingredients</p>
+                        </div>
+                        <a class="btn btn-dark" routerLink="{{ '/recipe/' + meal.idMeal }}">Recipe</a>
+                    </div>
                 </div>
             </div>
         </div>

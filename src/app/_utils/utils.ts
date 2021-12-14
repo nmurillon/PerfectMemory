@@ -3,6 +3,7 @@ export const processRecipe = (recipe: JSON) => {
     let ingredientCount = 0;
     let ingredients = [];
     while (i < 20 && recipe["strIngredient" + i] !== "") {
+        ingredientCount++;
         ingredients.push({
             'name': recipe["strIngredient" + i],
             'measure': recipe["strMeasure" + i]

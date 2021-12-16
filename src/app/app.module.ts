@@ -6,19 +6,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { RecipieViewComponent } from './recipie-view/recipie-view.component';
+import { RecipeViewComponent } from './recipe-view/recipe-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ToTestComponent } from './to-test/to-test.component';
+import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    RecipieViewComponent,
+    RecipeViewComponent,
     FavoritesComponent,
-    ToTestComponent
+    ToTestComponent,
+    RecipeCardComponent
   ],
   imports: [
     BrowserModule,

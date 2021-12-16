@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { RecipeService } from '../_services/recipe.service';
+import { StorageService } from '../_services/storage.service';
 import { processRecipe } from '../_utils/utils';
 
 @Component({
@@ -10,7 +11,7 @@ import { processRecipe } from '../_utils/utils';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private recipeService: RecipeService) { }
+  constructor(private recipeService: RecipeService, private storageService: StorageService) { }
   
   meals = [];
 
@@ -66,5 +67,13 @@ export class HomeComponent implements OnInit {
         }
       });
     }
+  }
+
+  addFavorites(recipe: any) {
+    this.storageService.addFavorite(recipe);
+  }
+
+  addToTest(recipe: any) {
+    this.storageService.addToTest(recipe);
   }
 }

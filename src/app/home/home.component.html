@@ -25,6 +25,8 @@
                             <p class="card-text">{{ meal.strCategory}} - {{ meal.ingredientCount }} ingredients</p>
                         </div>
                         <a class="btn btn-dark" routerLink="{{ '/recipe/' + meal.idMeal }}">Recipe</a>
+                        <button (click)="addFavorites(meal)">Add to favorites</button>
+                        <button (click)="addToTest(meal)">Add to Recipes to try</button>
                     </div>
                 </div>
             </div>

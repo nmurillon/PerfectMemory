@@ -25,8 +25,14 @@
                             <p class="card-text">{{ meal.strCategory}} - {{ meal.ingredientCount }} ingredients</p>
                         </div>
                         <a class="btn btn-dark" routerLink="{{ '/recipe/' + meal.idMeal }}">Recipe</a>
-                        <button (click)="addFavorites(meal)">Add to favorites</button>
-                        <button (click)="addToTest(meal)">Add to Recipes to try</button>
+                        <button class="btn" (click)="toggleFavorite(meal)">
+                            <fa-icon *ngIf="meal.favorite === true" [icon]="faStar" [styles]="{'stroke': 'red', 'color': 'red'}"></fa-icon>
+                            <fa-icon *ngIf="meal.favorite === false" [icon]="farStar" [styles]="{'stroke': 'red', 'color': 'red'}"></fa-icon>
+                        </button>
+                        <button class="btn" (click)="toggleToTest(meal)">
+                            <fa-icon *ngIf="meal.toTest === true" [icon]="faCheckCircle"></fa-icon>
+                            <fa-icon *ngIf="meal.toTest === false" [icon]="farCheckCircle"></fa-icon>
+                        </button>
                     </div>
                 </div>
             </div>

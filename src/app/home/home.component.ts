@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { faCheckCircle, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle as farCheckCircle, faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { RecipeService } from '../_services/recipe.service';
 import { StorageService } from '../_services/storage.service';
 import { processRecipe } from '../_utils/utils';
@@ -13,6 +15,10 @@ export class HomeComponent implements OnInit {
 
   constructor(private recipeService: RecipeService, private storageService: StorageService) { }
   
+  faStar = faStar;
+  farStar = farStar;
+  faCheckCircle = faCheckCircle;
+  farCheckCircle = farCheckCircle;
   meals = [];
 
   /* TODO : Split search in two parts : category filter and search by name */
@@ -69,11 +75,25 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  addFavorites(recipe: any) {
-    this.storageService.addFavorite(recipe);
+  toggleFavorite(recipe: any) {
+    if (recipe.favorite === true) {
+      this.storageService.removeFavorite(recipe);
+      recipe.favorite = !recipe.favorite
+    }
+    else {
+      recipe.favorite = !recipe.favorite
+      this.storageService.addFavorite(recipe);
+    }
   }
 
-  addToTest(recipe: any) {
-    this.storageService.addToTest(recipe);
+  toggleToTest(recipe: any) {
+    if (recipe.toTest === true) {
+      this.storageService.removeToTest(recipe);
+      recipe.toTest = !recipe.toTest
+    }
+    else {
+      recipe.toTest = !recipe.toTest
+      this.storageService.addToTest(recipe);
+    }
   }
 }

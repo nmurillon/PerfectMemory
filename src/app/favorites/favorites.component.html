@@ -1,5 +1,4 @@
 <div class="container">
     <div *ngFor="let recipe of favorites">
-        <h4>{{recipe.strMeal}}</h4>
-    </div>
+        <app-recipe-card [recipe]="recipe"></app-recipe-card>
 </div>

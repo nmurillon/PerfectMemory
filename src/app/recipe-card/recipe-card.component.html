@@ -1,0 +1,18 @@
+<div class="card-body">
+    <div>
+        <img [src]="recipe.strMealThumb" class="card-img-top" alt="{{'Picture of' + recipe.strMeal}}">
+        <div class="text-center">
+            <h4 class="fw-bold">{{ recipe.strMeal }}</h4>
+            <p class="card-text">{{ recipe.strCategory}} - {{ recipe.ingredientCount }} ingredients</p>
+        </div>
+        <a class="btn btn-dark" routerLink="{{ '/recipe/' + recipe.idMeal }}">Recipe</a>
+        <button class="btn" (click)="toggleFavorite(recipe)">
+            <fa-icon *ngIf="recipe.favorite === true" [icon]="faStar" [styles]="{'stroke': 'red', 'color': 'red'}"></fa-icon>
+            <fa-icon *ngIf="recipe.favorite === false" [icon]="farStar" [styles]="{'stroke': 'red', 'color': 'red'}"></fa-icon>
+        </button>
+        <button class="btn" (click)="toggleToTest(recipe)">
+            <fa-icon *ngIf="recipe.toTest === true" [icon]="faCheckCircle"></fa-icon>
+            <fa-icon *ngIf="recipe.toTest === false" [icon]="farCheckCircle"></fa-icon>
+        </button>
+    </div>
+</div>

@@ -17,24 +17,7 @@
 
         <div class="container d-flex row">
             <div class="card m-4 mw-45" *ngFor="let meal of meals">
-                <div class="card-body">
-                    <div>
-                        <img [src]="meal.strMealThumb" class="card-img-top" alt="{{'Picture of' + meal.strMeal}}">
-                        <div class="text-center">
-                            <h4 class="fw-bold">{{ meal.strMeal }}</h4>
-                            <p class="card-text">{{ meal.strCategory}} - {{ meal.ingredientCount }} ingredients</p>
-                        </div>
-                        <a class="btn btn-dark" routerLink="{{ '/recipe/' + meal.idMeal }}">Recipe</a>
-                        <button class="btn" (click)="toggleFavorite(meal)">
-                            <fa-icon *ngIf="meal.favorite === true" [icon]="faStar" [styles]="{'stroke': 'red', 'color': 'red'}"></fa-icon>
-                            <fa-icon *ngIf="meal.favorite === false" [icon]="farStar" [styles]="{'stroke': 'red', 'color': 'red'}"></fa-icon>
-                        </button>
-                        <button class="btn" (click)="toggleToTest(meal)">
-                            <fa-icon *ngIf="meal.toTest === true" [icon]="faCheckCircle"></fa-icon>
-                            <fa-icon *ngIf="meal.toTest === false" [icon]="farCheckCircle"></fa-icon>
-                        </button>
-                    </div>
-                </div>
+                <app-recipe-card [recipe]="meal"></app-recipe-card>
             </div>
         </div>
     </div>

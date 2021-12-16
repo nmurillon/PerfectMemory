@@ -56,11 +56,11 @@ export class StorageService {
       this.favorites.splice(idx,1);
       this.saveFavorites();
     }
-
+    this.emitFavorites();
   }
 
   saveToTest() {
-    localStorage.setItem("toTest", JSON.stringify(this.favorites));
+    localStorage.setItem("toTest", JSON.stringify(this.toTest));
   }
 
   emitToTest() {
@@ -73,8 +73,8 @@ export class StorageService {
 
   addToTest(recipe: any) {
     this.toTest.push(recipe);
-    this.saveFavorites();
-    this.emitFavorites();
+    this.saveToTest();
+    this.emitToTest();
   }
 
   removeToTest(recipe: any) {
@@ -84,5 +84,6 @@ export class StorageService {
       this.toTest.splice(idx,1);
       this.saveToTest();
     }
+    this.emitToTest();
   }
 }

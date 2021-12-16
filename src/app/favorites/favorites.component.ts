@@ -6,10 +6,11 @@ import { StorageService } from '../_services/storage.service';
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.css']
 })
+
 export class FavoritesComponent implements OnInit {
 
   favorites = [];
-  
+
   constructor(private storageService: StorageService) { }
 
   ngOnInit(): void {
@@ -21,4 +22,5 @@ export class FavoritesComponent implements OnInit {
 
     this.storageService.emitFavorites();
   }
+
 }

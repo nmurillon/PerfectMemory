@@ -1,5 +1,7 @@
 <div class="container">
-    <div *ngFor="let recipe of toTest">
-        <app-recipe-card [recipe]="recipe"></app-recipe-card>
-    </div>
+    <ul class="cards">
+        <div *ngFor="let recipe of toTest">
+            <app-recipe-card [recipe]="recipe"></app-recipe-card>
+        </div>
+    </ul>
 </div>

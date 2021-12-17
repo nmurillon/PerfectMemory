@@ -15,10 +15,10 @@
             <button type="submit" class="btn btn-success" (click)="onSearch()">Search</button>
         </form>
 
-        <div class="container d-flex row">
-            <div class="card m-4 mw-45" *ngFor="let meal of meals">
+        <ul class="cards">
+            <div *ngFor="let meal of meals">
                 <app-recipe-card [recipe]="meal"></app-recipe-card>
             </div>
-        </div>
+        </ul>
     </div>
 </div>

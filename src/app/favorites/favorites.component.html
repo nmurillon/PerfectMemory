@@ -1,4 +1,7 @@
 <div class="container">
-    <div *ngFor="let recipe of favorites">
-        <app-recipe-card [recipe]="recipe"></app-recipe-card>
+    <ul class="cards">
+        <div *ngFor="let recipe of favorites">
+            <app-recipe-card [recipe]="recipe"></app-recipe-card>
+        </div>
+    </ul>
 </div>

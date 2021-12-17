@@ -1,18 +1,29 @@
-<div class="card-body">
-    <div>
-        <img [src]="recipe.strMealThumb" class="card-img-top" alt="{{'Picture of' + recipe.strMeal}}">
-        <div class="text-center">
-            <h4 class="fw-bold">{{ recipe.strMeal }}</h4>
-            <p class="card-text">{{ recipe.strCategory}} - {{ recipe.ingredientCount }} ingredients</p>
+<li>
+    <div class="card">
+        <img [src]="recipe.strMealThumb" class="card-image" alt="{{'Picture of' + recipe.strMeal}}" />
+        <div class="card-overlay">
+            <div class="card-header">
+                <div class="card-svg card-arc"></div>
+                <div class="card-header-text">
+                    <h4 class="card-title">{{ recipe.strMeal }}</h4>
+                    <span class="card-infos">{{ recipe.strCategory}} - {{ recipe.ingredientCount }} ingredients</span>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center my-4">
+                <button routerLink="{{ '/recipe/' + recipe.idMeal }}" class="btn btn-outline-dark">See more</button>
+                <button class="btn" (click)="toggleFavorite(recipe)">
+                    <fa-icon *ngIf="recipe.favorite === true" [icon]="faStar" [styles]="{'color': 'red'}"
+                        data-bs-toggle="tooltip" data-bs-placement="top" title="Remove from favorites"></fa-icon>
+                    <fa-icon *ngIf="recipe.favorite === false" [icon]="farStar" [styles]="{'color': 'red'}"
+                        data-bs-toggle="tooltip" data-bs-placement="top" title="Add to favorites"></fa-icon>
+                </button>
+                <button class="btn" (click)="toggleToTest(recipe)">
+                    <fa-icon *ngIf="recipe.toTest === true" [icon]="faCheckCircle" data-bs-toggle="tooltip"
+                        data-bs-placement="top" title="Remove from test list"></fa-icon>
+                    <fa-icon *ngIf="recipe.toTest === false" [icon]="farCheckCircle" data-bs-toggle="tooltip"
+                        data-bs-placement="top" title="Add to test list"></fa-icon>
+                </button>
+            </div>
         </div>
-        <a class="btn btn-dark" routerLink="{{ '/recipe/' + recipe.idMeal }}">Recipe</a>
-        <button class="btn" (click)="toggleFavorite(recipe)">
-            <fa-icon *ngIf="recipe.favorite === true" [icon]="faStar" [styles]="{'stroke': 'red', 'color': 'red'}"></fa-icon>
-            <fa-icon *ngIf="recipe.favorite === false" [icon]="farStar" [styles]="{'stroke': 'red', 'color': 'red'}"></fa-icon>
-        </button>
-        <button class="btn" (click)="toggleToTest(recipe)">
-            <fa-icon *ngIf="recipe.toTest === true" [icon]="faCheckCircle"></fa-icon>
-            <fa-icon *ngIf="recipe.toTest === false" [icon]="farCheckCircle"></fa-icon>
-        </button>
     </div>
-</div>
+</li>

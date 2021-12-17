@@ -30,3 +30,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Sources
 
 Logo : https://www.cleanpng.com/png-recipe-food-restaurant-cuisine-cook-4027422/download-png.html
+Card Style : https://dribbble.com/shots/10951466-Social-Mobile-App
+Clip-Path: https://bennettfeely.com/clippy/

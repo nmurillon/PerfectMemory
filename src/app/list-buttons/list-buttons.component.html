@@ -1,0 +1,12 @@
+<button class="btn" (click)="toggleFavorite()">
+    <fa-icon *ngIf="recipe.favorite === true" [icon]="faStar" [styles]="{'color': 'red'}"
+        data-bs-toggle="tooltip" data-bs-placement="top" title="Remove from favorites"></fa-icon>
+    <fa-icon *ngIf="recipe.favorite === false" [icon]="farStar" [styles]="{'color': 'red'}"
+        data-bs-toggle="tooltip" data-bs-placement="top" title="Add to favorites"></fa-icon>
+</button>
+<button class="btn" (click)="toggleToTest()">
+    <fa-icon *ngIf="recipe.toTest === true" [icon]="faCheckCircle" data-bs-toggle="tooltip"
+        data-bs-placement="top" title="Remove from test list"></fa-icon>
+    <fa-icon *ngIf="recipe.toTest === false" [icon]="farCheckCircle" data-bs-toggle="tooltip"
+        data-bs-placement="top" title="Add to test list"></fa-icon>
+</button>

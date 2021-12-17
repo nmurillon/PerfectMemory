@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { StorageService } from '../_services/storage.service';
 
 @Component({
@@ -6,14 +7,14 @@ import { StorageService } from '../_services/storage.service';
   templateUrl: './to-test.component.html',
   styleUrls: ['./to-test.component.css']
 })
-export class ToTestComponent implements OnInit {
+export class ToTestComponent implements OnInit, OnDestroy {
 
   toTest = []
-
+  toTestSubscription: Subscription;
   constructor(private storageService: StorageService) { }
 
   ngOnInit(): void {
-    this.storageService.toTestSubject.subscribe(
+    this.toTestSubscription = this.storageService.toTestSubject.subscribe(
       (toTest: any[]) => {
         this.toTest = toTest;
       }
@@ -22,4 +23,7 @@ export class ToTestComponent implements OnInit {
     this.storageService.emitToTest();
   }
 
+  ngOnDestroy(): void {
+      this.toTestSubscription.unsubscribe();
+  }
 }

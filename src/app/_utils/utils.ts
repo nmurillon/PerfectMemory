@@ -11,8 +11,6 @@ export const processRecipe = (recipe: JSON) => {
         i++;
     }
     
-    recipe["favorite"] = false;
-    recipe["toTest"] = false;
     recipe["ingredientCount"] = ingredientCount;
     recipe['ingredients'] = ingredients;
 }

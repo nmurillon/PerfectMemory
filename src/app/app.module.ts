@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ToTestComponent } from './to-test/to-test.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
+import { ListButtonsComponent } from './list-buttons/list-buttons.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RecipeCardComponent } from './recipe-card/recipe-card.component';
     RecipeViewComponent,
     FavoritesComponent,
     ToTestComponent,
-    RecipeCardComponent
+    RecipeCardComponent,
+    ListButtonsComponent
   ],
   imports: [
     BrowserModule,

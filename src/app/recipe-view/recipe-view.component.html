@@ -1,11 +1,32 @@
-<div class="container" *ngIf="success">
-    <h2>{{ recipe.strMeal }}</h2>
-    <!-- Add favorite and Try it buttons -->
-    <div class="container">
-        <!-- Put ingedients here -->
-        <ul>
-            <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient.name }} - {{ ingredient.measure }} </li>
-        </ul>
-        <p>{{ recipe.strInstructions }}</p>
-    </div>
+<div class="container my-4" *ngIf="success">
+  <div class="recipe-img" [ngStyle]="{'background-image': 'url(' + recipe.strMealThumb +')'}"></div>
+  <div class="recipe-card__body">
+      <div class="d-flex justify-content-between">
+        <div>
+            <h1 class="recipe-card__heading">{{ recipe.strMeal }}</h1>
+            <h4 class="recipe-card__subhead">{{ recipe.strCategory }}</h4>
+        </div>
+        <div>
+            <app-list-buttons [recipe]="recipe"></app-list-buttons>
+        </div>
+      </div>
+
+    <ul class="recipe-card__nav">
+      <li>
+        <h3>Ingredients</h3>
+      </li>
+    </ul>   
+    
+    <ul class="recipe-card__ingredients">
+        <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient.measure }} - {{ ingredient.name }}</li>
+    </ul>
+
+    <ul class="recipe-card__nav my-4">
+        <li>
+          <h3>Instructions</h3>
+        </li>
+      </ul> 
+      <p>{{ recipe.strInstructions }}</p>
+
+  </div>
 </div>

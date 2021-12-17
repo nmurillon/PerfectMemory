@@ -11,18 +11,7 @@
             </div>
             <div class="d-flex justify-content-center my-4">
                 <button routerLink="{{ '/recipe/' + recipe.idMeal }}" class="btn btn-outline-dark">See more</button>
-                <button class="btn" (click)="toggleFavorite(recipe)">
-                    <fa-icon *ngIf="recipe.favorite === true" [icon]="faStar" [styles]="{'color': 'red'}"
-                        data-bs-toggle="tooltip" data-bs-placement="top" title="Remove from favorites"></fa-icon>
-                    <fa-icon *ngIf="recipe.favorite === false" [icon]="farStar" [styles]="{'color': 'red'}"
-                        data-bs-toggle="tooltip" data-bs-placement="top" title="Add to favorites"></fa-icon>
-                </button>
-                <button class="btn" (click)="toggleToTest(recipe)">
-                    <fa-icon *ngIf="recipe.toTest === true" [icon]="faCheckCircle" data-bs-toggle="tooltip"
-                        data-bs-placement="top" title="Remove from test list"></fa-icon>
-                    <fa-icon *ngIf="recipe.toTest === false" [icon]="farCheckCircle" data-bs-toggle="tooltip"
-                        data-bs-placement="top" title="Add to test list"></fa-icon>
-                </button>
+                <app-list-buttons [recipe]="recipe"></app-list-buttons>
             </div>
         </div>
     </div>

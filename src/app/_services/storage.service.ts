@@ -31,6 +31,18 @@ export class StorageService {
     }
   }
 
+  isFavorite(recipe: any) {
+    return this.favorites.find((item: any) => {
+      return item.idMeal === recipe.idMeal;
+    }) !== undefined;
+  }
+
+  isToTest(recipe: any) {
+    return this.toTest.find((item: any) => {
+      return item.idMeal === recipe.idMeal;
+    }) !== undefined;
+  }
+
   saveFavorites() {
     localStorage.setItem("favorites", JSON.stringify(this.favorites));
   }
@@ -50,10 +62,12 @@ export class StorageService {
   }
 
   removeFavorite(recipe: any) {
-    let idx = this.favorites.indexOf(recipe);
-    
-    if(idx !== -1){
-      this.favorites.splice(idx,1);
+    let r = this.favorites.find( (_recipe: any) => {
+      return _recipe.idMeal === recipe.idMeal;
+    });
+       
+    if(r !== undefined){
+      this.favorites.splice(this.favorites.indexOf(r),1);
       this.saveFavorites();
     }
     this.emitFavorites();
@@ -78,12 +92,36 @@ export class StorageService {
   }
 
   removeToTest(recipe: any) {
-    let idx = this.toTest.indexOf(recipe);
-    
-    if(idx !== -1){
-      this.toTest.splice(idx,1);
+    let r = this.toTest.find( (_recipe): any => {
+      return _recipe.idMeal === recipe.idMeal;
+    });
+       
+    if(r !== undefined){
+      this.toTest.splice(this.toTest.indexOf(r),1);
       this.saveToTest();
     }
     this.emitToTest();
+  }
+
+  toggleFavorite(recipe: any) {
+    if (recipe.favorite === true) {
+      this.removeFavorite(recipe);
+      recipe.favorite = !recipe.favorite
+    }
+    else {
+      recipe.favorite = !recipe.favorite
+      this.addFavorite(recipe);
+    }
+  }
+
+  toggleToTest(recipe: any) {
+    if (recipe.toTest === true) {
+      this.removeToTest(recipe);
+      recipe.toTest = !recipe.toTest
+    }
+    else {
+      recipe.toTest = !recipe.toTest
+      this.addToTest(recipe);
+    }
   }
 }

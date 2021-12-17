@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RecipeService } from '../_services/recipe.service';
 import { processRecipe } from '../_utils/utils';
+import { StorageService } from '../_services/storage.service';
 
 @Component({
   selector: 'app-recipe-view',
@@ -11,7 +12,7 @@ import { processRecipe } from '../_utils/utils';
 
 export class RecipeViewComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private recipeService: RecipeService) { }
+  constructor(private route: ActivatedRoute, private recipeService: RecipeService, private storageService: StorageService) { }
 
   recipe = undefined;
   success = false;
@@ -22,13 +23,14 @@ export class RecipeViewComponent implements OnInit {
       data => {
         this.recipe = data.meals[0];
         processRecipe(this.recipe);
+        this.recipe["favorite"] = this.storageService.isFavorite(this.recipe);
+        this.recipe["toTest"] = this.storageService.isToTest(this.recipe);
         this.success = true;
       },
       err => {
         console.error(err);
       }
     );
-
   }
 
 }

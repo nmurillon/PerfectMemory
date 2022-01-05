@@ -10,7 +10,7 @@ import { fadeAnimation } from 'src/app/_animations/animations';
   animations: [fadeAnimation]
 })
 export class AppComponent {
-  title = 'recipe-viewer';
+  title = 'perfect-recipe';
   faGithub = faGithub;
 
   prepareRoute(outlet: RouterOutlet): ActivatedRoute | '' {
